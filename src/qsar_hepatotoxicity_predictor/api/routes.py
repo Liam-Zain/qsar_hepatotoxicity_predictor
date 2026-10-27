@@ -35,11 +35,7 @@ def predict_single(request: SMILESRequest):
         raise HTTPException(status_code=500, detail="Model is not loaded")
 
     try:
-        fp, img = get_morgan_fingerprint(request.smiles)
-
-        if img[0] is None:
-            raise HTTPException(status_code=500, detail="Invalid SMILES string")
-        
+        fp= get_morgan_fingerprint(request.smiles)
         X_fp = fp.reshape(1, -1)
         prediction = int(model.predict(X_fp)[0])
         probability = float(np.round(model.predict_proba(X_fp)[0][1] * 100, 2))
@@ -74,18 +70,7 @@ def predict_batch(request: BatchSMILESRequest):
     results = []
     for smile in request.smiles_list:
         try:
-            fp, img = get_morgan_fingerprint(smile)
-            
-            if img[0] is None:
-                results.append(PredictionResponse(
-                    smiles=smile,
-                    prediction=None,
-                    probability=None,
-                    is_hepatotoxic=None,
-                    likelihood="Invalid SMILES"
-                ))
-                continue
-
+            fp= get_morgan_fingerprint(smile)   
             X_fp = fp.reshape(1, -1)
             prediction = int(model.predict(X_fp)[0])
             probability = float(np.round(model.predict_proba(X_fp)[0][1] * 100, 2))

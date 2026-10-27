@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from rdkit import Chem
-from rdkit.Chem import rdFingerprintGenerator, Draw
+from rdkit.Chem import rdFingerprintGenerator
 
 def get_morgan_fingerprint(smiles_input, radius: int = 2, n_bits: int = 2048):
     """Generates the Morgan Fingerprints (ECFP4) from SMILES."""
@@ -11,7 +11,6 @@ def get_morgan_fingerprint(smiles_input, radius: int = 2, n_bits: int = 2048):
         smiles_list = list(smiles_input)
     
     fingerprints = []
-    images = []
 
     generator = rdFingerprintGenerator.GetMorganGenerator(radius=radius, fpSize=n_bits, includeChirality=True)
 
@@ -22,14 +21,7 @@ def get_morgan_fingerprint(smiles_input, radius: int = 2, n_bits: int = 2048):
             fp = generator.GetCountFingerprintAsNumPy(mol)
             fingerprints.append(fp)
 
-            try:
-                img = Draw.MolToImage(mol)
-                images.append(img)
-            except Exception:
-                images.append(None)
-
         else:
             fingerprints.append(np.zeros(n_bits))
-            images.append(None)
     
-    return np.array(fingerprints), images
+    return np.array(fingerprints)
