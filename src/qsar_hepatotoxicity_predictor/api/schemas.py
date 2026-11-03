@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 class SMILESRequest(BaseModel):
     smiles: str
@@ -9,7 +9,7 @@ class BatchSMILESRequest(BaseModel):
 
 class PredictionResponse(BaseModel):
     smiles: str
-    prediction: int
-    probability: float
-    is_hepatotoxic: bool
-    likelihood: str
+    prediction: Optional[int]
+    probability: Optional[float]
+    is_hepatotoxic: Optional[bool]
+    likelihood: Optional[str]

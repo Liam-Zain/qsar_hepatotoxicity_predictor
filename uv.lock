@@ -2271,7 +2271,7 @@ wheels = [
 ]
 
 [[package]]
-name = "qsar-hepatotoxicity-predictor"
+name = "qsar_hepatotoxicity_predictor"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

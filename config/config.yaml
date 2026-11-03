@@ -2,8 +2,7 @@ data:
   data_path: "data/01_raw/tox_khan.csv"
   raw_tox21_path: "data/01_raw/tox21_path.csv"
   dili_path: "data/01_raw/dili_st.csv"
-  clean_tox21_path: "data/03_processed/tox21_clean.csv"
-  predictions_dir: "data/04_predictions/"
+  clean_tox21_path: "data/02_processed/tox21_clean.csv"
 
 model:
   target_col: "Target"

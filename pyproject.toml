@@ -1,5 +1,5 @@
 [project]
-name = "qsar-hepatotoxicity-predictor"
+name = "qsar_hepatotoxicity_predictor"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-qsar-hepatotoxicity-predictor = "qsar_hepatotoxicity_predictor:main"
+qsar_hepatotoxicity_predictor = "qsar_hepatotoxicity_predictor:main"
 
 [build-system]
 requires = ["uv_build>=0.12.17,<0.13.0"]

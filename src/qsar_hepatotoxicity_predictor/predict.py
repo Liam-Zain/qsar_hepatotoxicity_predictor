@@ -1,7 +1,7 @@
 import joblib
 import numpy as np
 import pandas as pd
-from .features import get_morgan_fingerprint
+from qsar_hepatotoxicity_predictor.features import get_morgan_fingerprint
 
 def load_model(model_save_path: str):
     """Loads the trained model from a file."""

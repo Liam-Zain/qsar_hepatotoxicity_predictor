@@ -7,8 +7,8 @@ from sklearn.calibration import CalibratedClassifierCV
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 
-from .data import load_dataset, split_data
-from .features import get_morgan_fingerprint
+from qsar_hepatotoxicity_predictor.data import load_dataset, split_data
+from qsar_hepatotoxicity_predictor.features import get_morgan_fingerprint
 
 def build_meta_learner() -> VotingClassifier:
     """Builds a Soft Voting Meta-Learner using different Classification models."""
